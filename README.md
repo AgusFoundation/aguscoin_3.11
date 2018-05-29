@@ -1,6 +1,7 @@
 ### 3.0 -> 3.11
 
--some additional custom rpc commands 4 daemon
+- some additional rpc commands 4 daemon
+- disable mnemonic
 
 ### Linux (Debian/Ubuntu/Mint)
 
