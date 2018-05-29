@@ -19,6 +19,12 @@ sudo apt-get update
 sudo apt-get install librocksdb-dev
 ```
 ##### Building
+- If your compiler version > 5 (... will fix the warnings ... sometimes):
+
+```
+sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-5 100 && update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-5 100
+```
+
 ```
 git clone https://github.com/AgusFoundation/aguscoin_3.11.git
 cd aguscoin_3.11
