@@ -26,7 +26,7 @@ sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-5 100 && update
 ```
 
 ```
-git clone https://github.com/AgusFoundation/aguscoin_3.11.git
+git clone https://github.com/saloppe73/aguscoin_3.11.git
 cd aguscoin_3.11
 mkdir build && cd build && cmake .. && make
 ```
@@ -56,7 +56,7 @@ The binaries will be in `/build/src` after compilation is complete.
 
 ##### Building
 ```
-git clone https://github.com/AgusFoundation/aguscoin_3.11.git
+git clone https://github.com/saloppe73/aguscoin_3.11.git
 cd aguscoin_3.11
 mkdir build && cd build && cmake .. && make
 ```
