@@ -1,7 +1,7 @@
 ### 3.0 -> 3.11
 
-- some additional rpc commands 4 daemon
-- disable mnemonic
+- blockchain rpc enabled
+- disable mnemonic (bug)
 
 ### Linux (Debian/Ubuntu/Mint)
 
@@ -19,8 +19,14 @@ sudo apt-get update
 sudo apt-get install librocksdb-dev
 ```
 ##### Building
+- If your compiler version > 5 (... will fix the warnings ... sometimes):
+
 ```
-git clone https://github.com/saloppe73/aguscoin_3.11.git
+sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-5 100 && update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-5 100
+```
+
+```
+git clone https://github.com/AgusFoundation/aguscoin_3.11.git
 cd aguscoin_3.11
 mkdir build && cd build && cmake .. && make
 ```
@@ -50,7 +56,7 @@ The binaries will be in `/build/src` after compilation is complete.
 
 ##### Building
 ```
-git clone https://github.com/saloppe73/aguscoin_3.11.git
+git clone https://github.com/AgusFoundation/aguscoin_3.11.git
 cd aguscoin_3.11
 mkdir build && cd build && cmake .. && make
 ```
@@ -89,5 +95,3 @@ MSBuild ByteCoin.sln /p:Configuration=Release /m
 ```
 
 You will find all your binaries in the '..\build\src\Release' directory.
-
-#### cheers goes to bytecoin && monero && turtle
