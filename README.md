@@ -1,6 +1,7 @@
 ### 3.0 -> 3.11
 
--some additional custom rpc commands 4 daemon
+- blockchain rpc enabled
+- disable mnemonic (bug)
 
 ### Linux (Debian/Ubuntu/Mint)
 
@@ -19,7 +20,7 @@ sudo apt-get install librocksdb-dev
 ```
 ##### Building
 ```
-git clone https://github.com/saloppe73/aguscoin_3.11.git
+git clone https://github.com/AgusFoundation/aguscoin_3.11.git
 cd aguscoin_3.11
 mkdir build && cd build && cmake .. && make
 ```
@@ -49,7 +50,7 @@ The binaries will be in `/build/src` after compilation is complete.
 
 ##### Building
 ```
-git clone https://github.com/saloppe73/aguscoin_3.11.git
+git clone https://github.com/AgusFoundation/aguscoin_3.11.git
 cd aguscoin_3.11
 mkdir build && cd build && cmake .. && make
 ```
