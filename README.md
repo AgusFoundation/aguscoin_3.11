@@ -95,3 +95,6 @@ MSBuild ByteCoin.sln /p:Configuration=Release /m
 ```
 
 You will find all your binaries in the '..\build\src\Release' directory.
+
+#### cheerz to cryptonote && bytecoin && monero && turtle
+
