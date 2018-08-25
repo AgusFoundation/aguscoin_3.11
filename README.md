@@ -24,15 +24,14 @@ sudo apt-get install librocksdb-dev
 ```
 sudo apt install gcc-5 g++-5 -y
 sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-5 100 && sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-5 100
-
 ```
 
 - or leech this deb:
+
 ```
 https://mega.nz/#!R9hD0Yzb!LCpf06j9MDmqi_2C5jJsfbsCY-gyDzvVRhYiRzLMkyw
 sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++54 100 && sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc54 100
 ```
-
 ```
 git clone https://github.com/saloppe73/aguscoin_3.11_dev.git
 cd aguscoin_3.11_dev
