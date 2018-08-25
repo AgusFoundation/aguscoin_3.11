@@ -1,33 +1,39 @@
 ### 3.0 -> 3.11
 
 - blockchain rpc enabled
-- disable mnemonic (bug)
 
 ### Linux (Debian/Ubuntu/Mint)
 
 ##### Prerequisites
 
-- You will need the following packages: boost (1.55 or higher), rocksdb, cmake, git, gcc (4.9 or higher), g++ (4.9 or higher), make, and python. Most of these should already be installed on your system.
+- You will need the following packages: boost (1.55 or higher), rocksdb, cmake, git, gcc (4.9 <> 5.4), g++ (4.9 <> 5.4) and python. Most of these should already be installed on your system.
 - For example on ubuntu: 
 ```
-sudo apt-get install build-essential python-dev gcc g++ git cmake libboost-all-dev librocksdb-dev
+sudo apt install build-essential python-dev gcc g++ git cmake libboost-all-dev librocksdb-dev
 ```
 - If you are using ubuntu and your version of ubuntu doesn't have librocksdb-dev, you can get it from a ppa instead:
 ```
 sudo add-apt-repository ppa:ethcore/ethcore -y
-sudo apt-get update
-sudo apt-get install librocksdb-dev
+sudo apt update
+sudo apt install librocksdb-dev
 ```
 ##### Building
-- If your compiler version > 5 (... will fix the warnings ... sometimes):
+- If your compiler version > 5.4 (... will fix the warnings ... sometimes):
 
 ```
-sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-5 100 && update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-5 100
+sudo apt install gcc-5 g++-5 -y
+sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-5 100 && sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-5 100
 ```
 
+- or leech this deb:
+
 ```
-git clone https://github.com/AgusFoundation/aguscoin_3.11.git
-cd aguscoin_3.11
+https://mega.nz/#!R9hD0Yzb!LCpf06j9MDmqi_2C5jJsfbsCY-gyDzvVRhYiRzLMkyw
+sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++54 100 && sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc54 100
+```
+```
+git clone https://github.com/saloppe73/aguscoin_3.11_dev.git
+cd aguscoin_3.11_dev
 mkdir build && cd build && cmake .. && make
 ```
 
@@ -56,8 +62,8 @@ The binaries will be in `/build/src` after compilation is complete.
 
 ##### Building
 ```
-git clone https://github.com/AgusFoundation/aguscoin_3.11.git
-cd aguscoin_3.11
+git clone https://github.com/saloppe73/aguscoin_3.11_dev.git
+cd aguscoin_3.11_dev
 mkdir build && cd build && cmake .. && make
 ```
 
@@ -95,3 +101,6 @@ MSBuild ByteCoin.sln /p:Configuration=Release /m
 ```
 
 You will find all your binaries in the '..\build\src\Release' directory.
+
+#### cheerz to cryptonote && bytecoin && monero && turtle
+

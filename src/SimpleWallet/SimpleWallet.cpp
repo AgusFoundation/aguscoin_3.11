@@ -38,7 +38,7 @@
 #include "Common/Util.h"
 #include "CryptoNoteCore/CryptoNoteFormatUtils.h"
 #include "CryptoNoteProtocol/CryptoNoteProtocolHandler.h"
-//#include "Mnemonics/electrum-words.cpp"
+#include "Mnemonics/electrum-words.cpp"
 #include "NodeRpcProxy/NodeRpcProxy.h"
 #include "Rpc/CoreRpcServerCommandsDefinitions.h"
 #include "Rpc/HttpClient.h"
@@ -517,20 +517,20 @@ bool simple_wallet::init(const boost::program_options::variables_map& vm) {
     return false;
   }
 
-  //bool key_import = true;
+  bool key_import = true;
   
   if (m_generate_new.empty() && m_wallet_file_arg.empty()) {
     //std::cout << "Nor 'generate-new-wallet' neither 'wallet-file' argument was specified.\nWhat do you want to do?\n[O]pen existing wallet, [G]enerate new wallet file or [E]xit.\n";
-    std::cout << "Nor 'generate-new-wallet' neither 'wallet-file' argument was specified.\nWhat do you want to do?\n[O]pen existing wallet, [G]enerate new wallet file, [I]mport wallet or [E]xit.\n";
-    //std::cout << "Nor 'generate-new-wallet' neither 'wallet-file' argument was specified.\nWhat do you want to do?\n[O]pen existing wallet, [G]enerate new wallet file, [I]mport wallet, [M]nemonic import or [E]xit.\n";
+    //std::cout << "Nor 'generate-new-wallet' neither 'wallet-file' argument was specified.\nWhat do you want to do?\n[O]pen existing wallet, [G]enerate new wallet file, [I]mport wallet or [E]xit.\n";
+    std::cout << "Nor 'generate-new-wallet' neither 'wallet-file' argument was specified.\nWhat do you want to do?\n[O]pen existing wallet, [G]enerate new wallet file, [I]mport wallet, [M]nemonic import or [E]xit.\n";
     char c;
     do {
       std::string answer;
       std::getline(std::cin, answer);
       c = answer[0];
       //if (!(c == 'O' || c == 'G' || c == 'E' || c == 'o' || c == 'g' || c == 'e')) {
-      if (!(c == 'O' || c == 'G' || c == 'E' || c == 'I' || c == 'o' || c == 'g' || c == 'e' || c == 'i')) {
-      //if (!(c == 'O' || c == 'G' || c == 'E' || c == 'I' || c == 'M' || c == 'o' || c == 'g' || c == 'e' || c == 'i' || c == 'm')) {
+      //if (!(c == 'O' || c == 'G' || c == 'E' || c == 'I' || c == 'o' || c == 'g' || c == 'e' || c == 'i')) {
+      if (!(c == 'O' || c == 'G' || c == 'E' || c == 'I' || c == 'M' || c == 'o' || c == 'g' || c == 'e' || c == 'i' || c == 'm')) {
         std::cout << "Unknown command: " << c <<std::endl;
       } else {
         break;
@@ -551,12 +551,12 @@ bool simple_wallet::init(const boost::program_options::variables_map& vm) {
 
     //if (c == 'g' || c == 'G') {
     if (c == 'i' || c == 'I') {
-	  /*
+	  
 	  key_import = true;
 	  m_import_new = userInput;
 	  } else if (c == 'm' || c == 'M') {
 	    key_import = false;
-	  */
+	  
 	    	  
 	  m_import_new = userInput;
 	  } else if (c == 'g' || c == 'G') {
@@ -669,12 +669,12 @@ bool simple_wallet::init(const boost::program_options::variables_map& vm) {
   std::string private_spend_key_string;
   std::string private_view_key_string;
   
-  /*
+  
   Crypto::SecretKey private_spend_key;
   Crypto::SecretKey private_view_key;
   
   if (key_import) {
-  */
+  
   
   do {
     std::cout << "Private Spend Key: ";
@@ -687,7 +687,7 @@ bool simple_wallet::init(const boost::program_options::variables_map& vm) {
     boost::algorithm::trim(private_view_key_string);
   } while (private_view_key_string.empty());
   
-	/*
+	
 	} else {
 	  std::string mnemonic_phrase;
 	
@@ -697,16 +697,16 @@ bool simple_wallet::init(const boost::program_options::variables_map& vm) {
 	    boost::algorithm::trim(mnemonic_phrase);
 	    boost::algorithm::to_lower(mnemonic_phrase);
 	  } while (!is_valid_mnemonic(mnemonic_phrase, private_spend_key));
-	*/
+	
 	  /* This is not used, but is needed to be passed to the function, not sure how we can avoid this */
-	  /*
+	  
 	  Crypto::PublicKey unused_dummy_variable;
 	
 	  AccountBase::generateViewFromSpend(private_spend_key, private_view_key, unused_dummy_variable);
 	}
-	*/
+	
 
-	//if (key_import) {
+	if (key_import) {
 	
 	  Crypto::Hash private_spend_key_hash;
 	  Crypto::Hash private_view_key_hash;
@@ -718,12 +718,12 @@ bool simple_wallet::init(const boost::program_options::variables_map& vm) {
 	    return false;
 	  }
 	  
-	  Crypto::SecretKey private_spend_key = *(struct Crypto::SecretKey *) &private_spend_key_hash;
-	  //private_spend_key = *(struct Crypto::SecretKey *) &private_spend_key_hash;
+	  //Crypto::SecretKey private_spend_key = *(struct Crypto::SecretKey *) &private_spend_key_hash;
+	  private_spend_key = *(struct Crypto::SecretKey *) &private_spend_key_hash;
 	  
-	  Crypto::SecretKey private_view_key = *(struct Crypto::SecretKey *) &private_view_key_hash;
-	  //private_view_key = *(struct Crypto::SecretKey *) &private_view_key_hash;
-	//}
+	  //Crypto::SecretKey private_view_key = *(struct Crypto::SecretKey *) &private_view_key_hash;
+	  private_view_key = *(struct Crypto::SecretKey *) &private_view_key_hash;
+	}
 
   if (!new_wallet(private_spend_key, private_view_key, walletFileName, pwd_container.password())) {
     logger(ERROR, BRIGHT_RED) << "account creation failed";
@@ -775,7 +775,7 @@ spend key, and NOT their private view key - and they won't be able to restore
 their funds.
 */
 
-/*
+
 std::string simple_wallet::generate_mnemonic(Crypto::SecretKey &private_spend_key) {
 
   std::string mnemonic_str;
@@ -799,7 +799,7 @@ void simple_wallet::log_incorrect_words(std::vector<std::string> words) {
 }
 //----------------------------------------------------------------------------------------------------
 bool simple_wallet::is_valid_mnemonic(std::string &mnemonic_phrase, Crypto::SecretKey &private_spend_key) {
-*/
+
   /* Uncommenting these will allow importing of different languages, exporting
      in different languages however has not been added, as it will require
      changing the export_keys command to take an argument to specify what
@@ -811,7 +811,7 @@ bool simple_wallet::is_valid_mnemonic(std::string &mnemonic_phrase, Crypto::Secr
      dictionaries of other words can overlap enough to allow an esperanto
      seed for example to be imported as an english seed */
 
-  /*
+
   //static std::string languages[] = {\"English\", \"Nederlands\", \"Français\", \"Português\", \"Italiano\", \"Deutsch\", \"русский язык\", \"简体中文 (中国)\", \"Esperanto\", \"Lojban\"};
   static std::string languages[] = {"English"};
 
@@ -830,29 +830,27 @@ bool simple_wallet::is_valid_mnemonic(std::string &mnemonic_phrase, Crypto::Secr
     log_incorrect_words(words);
     return false;
   }
-*/
+
   /* Check every language for our phrase so the user doesn't have to specify
      it, this shouldn't be an issue as long as one language doesn't have enough
      of another languages words, might need some testing */
-  /*
+
   for (int i = 0; i < num_of_languages; i++) {
     if (crypto::ElectrumWords::words_to_bytes(mnemonic_phrase, private_spend_key, languages[i])) {
       return true;
     }
   }
-  */
+
   /* The issue with this is if we try and automagically determine what language
      the seed phrase is in, then we can't log words which aren't in the x
      dictionary, we will have to take an argument to know what language they
      are in, but this is less user friendly. */
-  /*
+
   logger(ERROR, BRIGHT_RED) << "Invalid mnemonic phrase!";
   log_incorrect_words(words);
   return false;
 }
 //----------------------------------------------------------------------------------------------------
-*/
-
 
 
 bool simple_wallet::deinit() {
@@ -1157,23 +1155,23 @@ bool simple_wallet::export_keys(const std::vector<std::string>& args/* = std::ve
 	success_msg_writer(true) << "Spend secret key: " << Common::podToHex(keys.spendSecretKey);
 	success_msg_writer(true) << "View secret key: " <<  Common::podToHex(keys.viewSecretKey);
 	
-	/*
+	
 	Crypto::PublicKey unused_dummy_variable;
     Crypto::SecretKey deterministic_private_view_key;
   
     AccountBase::generateViewFromSpend(keys.spendSecretKey, deterministic_private_view_key, unused_dummy_variable);
   
     bool deterministic_private_keys = deterministic_private_view_key == keys.viewSecretKey;
-    */
+    
   /* Only output the mnemonic seed if it's valid for this wallet - the old
      wallet code generated random spend and view keys so we can't create a
      mnemonic seed */
     
-    /* 
+     
     if (deterministic_private_keys) {
       std::cout << "Mnemonic seed: " << generate_mnemonic(keys.spendSecretKey) << std::endl;
     }
-	*/
+	
 	return true;
 }
 
