@@ -32,8 +32,8 @@ https://mega.nz/#!R9hD0Yzb!LCpf06j9MDmqi_2C5jJsfbsCY-gyDzvVRhYiRzLMkyw
 sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++54 100 && sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc54 100
 ```
 ```
-git clone https://github.com/saloppe73/aguscoin_3.11_dev.git
-cd aguscoin_3.11_dev
+git clone https://github.com/AgusFoundation/aguscoin_3.11.git
+cd aguscoin_3.11
 mkdir build && cd build && cmake .. && make
 ```
 
@@ -62,8 +62,8 @@ The binaries will be in `/build/src` after compilation is complete.
 
 ##### Building
 ```
-git clone https://github.com/saloppe73/aguscoin_3.11_dev.git
-cd aguscoin_3.11_dev
+git clone https://github.com/AgusFoundation/aguscoin_3.11.git
+cd aguscoin_3.11
 mkdir build && cd build && cmake .. && make
 ```
 
