@@ -7,7 +7,7 @@
 
 ##### Prerequisites
 
-- You will need the following packages: boost (1.55 or higher), rocksdb, cmake, git, gcc (4.9 <> 5.4), g++ (4.9 <> 5.4), make, and python. Most of these should already be installed on your system.
+- You will need the following packages: boost (1.55 or higher), rocksdb, cmake, git, gcc (4.9 <> 5.4), g++ (4.9 <> 5.4) and python. Most of these should already be installed on your system.
 - For example on ubuntu: 
 ```
 sudo apt-get install build-essential python-dev gcc g++ git cmake libboost-all-dev librocksdb-dev
