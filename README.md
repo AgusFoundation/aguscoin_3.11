@@ -1,7 +1,6 @@
 ### 3.0 -> 3.11
 
 - blockchain rpc enabled
-- disable mnemonic (bug)
 
 ### Linux (Debian/Ubuntu/Mint)
 
@@ -10,13 +9,13 @@
 - You will need the following packages: boost (1.55 or higher), rocksdb, cmake, git, gcc (4.9 <> 5.4), g++ (4.9 <> 5.4) and python. Most of these should already be installed on your system.
 - For example on ubuntu: 
 ```
-sudo apt-get install build-essential python-dev gcc g++ git cmake libboost-all-dev librocksdb-dev
+sudo apt install build-essential python-dev gcc g++ git cmake libboost-all-dev librocksdb-dev
 ```
 - If you are using ubuntu and your version of ubuntu doesn't have librocksdb-dev, you can get it from a ppa instead:
 ```
 sudo add-apt-repository ppa:ethcore/ethcore -y
-sudo apt-get update
-sudo apt-get install librocksdb-dev
+sudo apt update
+sudo apt install librocksdb-dev
 ```
 ##### Building
 - If your compiler version > 5.4 (... will fix the warnings ... sometimes):
